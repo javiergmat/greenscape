@@ -1,5 +1,5 @@
-# Use official Nginx Alpine image
-FROM nginx:alpine
+# Use official Nginx Alpine image with explicit platform
+FROM --platform=linux/amd64 nginx:alpine
 
 # Set working directory
 WORKDIR /usr/share/nginx/html
