@@ -1,14 +1,16 @@
 # Use official Nginx Alpine image
-FROM --platform=linux/amd64 nginx:alpine
+FROM nginx:alpine
 
 # Set working directory
 WORKDIR /usr/share/nginx/html
 
-# Copy website files
+# Copy website files (index, styles, scripts, and images)
 COPY index.html .
 COPY styles.css .
 COPY scripts.js .
-COPY images/ ./images/
+
+# Copy images folder to the Nginx HTML folder (for serving static images)
+COPY images /usr/share/nginx/html/images
 
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
